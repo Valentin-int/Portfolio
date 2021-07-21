@@ -1,0 +1,39 @@
+@import '../variables.scss';
+
+.intro {
+    position: relative;
+    margin-top: 2%;
+    font-size: 2.5rem;
+    z-index: -1;
+}
+
+.description {
+    margin-top: 5%;
+}
+
+.strong-font {
+    font-family: $font-title;
+}
+
+h1 {
+    font-size: 200%;
+}
+
+.idea-in-water {
+    width: 100%;
+    z-index: -1;
+}
+
+.footer-home {
+    position: relative;
+    z-index: 1;
+    bottom: 310px;
+}
+
+.logo {
+    position: relative;
+    z-index: 2;
+    bottom: 380px;
+    display: flex;
+    justify-content: end;
+}
