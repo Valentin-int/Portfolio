@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				Portefolio de Valentin
+			{% endblock %}
+		</title>
+		<link rel="icon" type="image/png" href="{{ asset('images/V2_noir.png') }}"/>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% block navbar %}
+		{% endblock %}
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>
