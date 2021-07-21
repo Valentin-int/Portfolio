@@ -1,0 +1,41 @@
+@import 'variables.scss';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $light;
+    color: $dark;
+}
+
+p {
+    font-size: 1.3em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-title;
+}
+
+ul {
+    list-style: none;
+}
+
+.create-button {
+    background-color: $primary;
+    color: $light;
+    font-weight: bold;
+    border-radius: $space;
+    width: $space-2 * 25;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: lighten($secondary, 10%);
+        color: $light;
+    }
+}
