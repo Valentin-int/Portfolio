@@ -1,5 +1,9 @@
 {% extends "parent/base.html.twig" %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+{% endblock %}
+
 {% block navbar %}
-{% include "include/_navbar.html.twig" %}
+	{% include "include/_navbar.html.twig" %}
 {% endblock %}
