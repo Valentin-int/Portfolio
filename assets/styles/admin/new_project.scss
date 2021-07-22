@@ -1,0 +1,13 @@
+@import '../variables.scss';
+
+body {
+    background-image: url("../../images/misty-mountains.jpg");
+    background-size: cover;
+}
+
+.form-new-project {
+    color: $light;
+    width: 30%;
+    margin-right: 15%;
+    margin-top: 10%;
+}

@@ -2,26 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Project;
+use App\Entity\Contributor;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProjectType extends AbstractType
+class ContributorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('url_project')
-            ->add('description')
+            ->add('lastname')
+            ->add('firstname')
+            ->add('project')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Project::class,
+            'data_class' => Contributor::class,
         ]);
     }
 }

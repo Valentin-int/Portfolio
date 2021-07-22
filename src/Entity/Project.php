@@ -44,6 +44,11 @@ class Project
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
     public function __construct()
     {
         $this->contributors = new ArrayCollection();
@@ -166,6 +171,18 @@ class Project
                 $image->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
