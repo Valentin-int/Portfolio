@@ -1,10 +1,27 @@
 @import '../variables.scss';
 
-.contact {
-    background-image: url("../../images/far-mountains.jpg");
-    background-size: contain;
+.background-contact{
+    z-index: 1;
+    position: relative;
+    width: 100%; 
+    height: 750px; 
+    object-fit: cover; 
 }
 
 .form-new-project {
+    z-index: 2;
+    position: relative;
+    margin-right: 15%;
     color: $light;
+    bottom: 650px;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    bottom: 500px;
+}
+
+.social {
+    margin-right: 2%;
 }
