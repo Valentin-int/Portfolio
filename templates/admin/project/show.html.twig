@@ -1,42 +1,57 @@
 {% extends "parent/layout_admin.html.twig" %}
 
 {% block body %}
-	<h1>Project</h1>
+	<div class="container-fluid mt-4">
+		<div class="row">
+			<div class="col-6">
+				<h1>{{ project.name }}</h1>
+				<h2>Description</h2>
+				<p>{{ project.description }}</p>
+			</div>
+			<div id="carouselExampleControls" class="carousel slide col-6" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					{% for image in project.images %}
+						<div class="carousel-item active">
+							<img src="{{ asset('uploads/' ~ image.name) }}" class="d-block w-100" alt="{{ image.name }}">
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="row form-add">
+			<div class="col-4">
+				{{ form_start(formImage) }}
+				{{ form_row(formImage.pictureFile) }}
+				<button class="btn create-button">{{ button_label|default('Save') }}</button>
+				{{ form_end(formImage) }}
+			</div>
+			<div class="col-4">
+				{{ form_start(formContributor) }}
+				{{ form_row(formContributor.lastname) }}
+				{{ form_row(formContributor.firstname) }}
+				<button class="btn create-button">{{ button_label|default('Save') }}</button>
+				{{ form_end(formContributor) }}
+			</div>
+			<div class="col-4">
+				{{ form_start(formTechno) }}
+				{{ form_row(formTechno.name) }}
+				<button class="btn create-button">{{ button_label|default('Save') }}</button>
+				{{ form_end(formTechno) }}
+			</div>
+		</div>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ project.id }}</td>
-			</tr>
-			<tr>
-				<th>Name</th>
-				<td>{{ project.name }}</td>
-			</tr>
-			<tr>
-				<th>Url_project</th>
-				<td>{{ project.urlProject }}</td>
-			</tr>
-		</tbody>
-	</table>
-	{{ form_start(formImage) }}
-	{{ form_widget(formImage) }}
-	<button class="btn create-button">{{ button_label|default('Save') }}</button>
-	{{ form_end(formImage) }}
+		<a href="{{ path('admin_project_index') }}">back to list</a>
 
-    {{ form_start(formContributor) }}
-	{{ form_widget(formContributor) }}
-	<button class="btn create-button">{{ button_label|default('Save') }}</button>
-	{{ form_end(formContributor) }}
+		<a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
 
-    {{ form_start(formTechno) }}
-	{{ form_widget(formTechno) }}
-	<button class="btn create-button">{{ button_label|default('Save') }}</button>
-	{{ form_end(formTechno) }}
-
-	<a href="{{ path('admin_project_index') }}">back to list</a>
-
-	<a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
-
-	{{ include('admin/project/_delete_form.html.twig') }}
+		{{ include('admin/project/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

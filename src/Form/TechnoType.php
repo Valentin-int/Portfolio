@@ -14,7 +14,7 @@ class TechnoType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Techno utilisé',
+                'label' => 'Ajouter une techno :',
             ])
         ;
     }
