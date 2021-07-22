@@ -30,12 +30,14 @@ ul {
 }
 
 .create-button {
+    padding: $space-2;
     background-color: $primary;
     color: $light;
     font-weight: bold;
-    border-radius: $space;
+    border-radius: $space/2;
     width: $space-2 * 25;
     text-transform: uppercase;
+    text-decoration: none;
 
     &:hover {
         background-color: lighten($secondary, 10%);
