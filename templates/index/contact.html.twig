@@ -2,8 +2,9 @@
 	{{ encore_entry_link_tags('contact') }}
 {% endblock %}
 <section class="contact" id="contact">
-	<div class="d-flex justify-content-end">
-		<div class="form-new-project bg-secondary p-3">
+	<img class="background-contact" src="{{ asset('build/images/between-mountains.jpg') }}" alt="background-contact"/>
+	<div class="d-flex justify-content-end mx-0">
+		<div class="form-new-project bg-secondary p-4">
 			<h1 class="mb-3 font-weight-normal d-flex justify-content-center">
 				<strong>Contact</strong>
 			</h1>
@@ -15,5 +16,54 @@
 			<button class="btn create-button">{{ button_label|default('ENVOYER') }}</button>
 			{{ form_end(formContact) }}
 		</div>
+	</div>
+</section>
+<section class="footer">
+	<div class="information d-flex justify-content-around">
+		<div class="maps">
+			<div class="d-flex justify-content-center">
+				{% include "include/logo/_logo-maps.html.twig" %}
+			</div>
+			<h1 class="d-flex justify-content-center mt-4">
+				<strong>Ma position</strong>
+			</h1>
+			<p class="d-flex justify-content-center">
+				45000, Orléans
+			</p>
+		</div>
+		<div class="email">
+			<div class="d-flex justify-content-center">
+				{% include "include/logo/_logo-mail.html.twig" %}
+			</div>
+			<h1 class="d-flex justify-content-center mt-4">
+				<strong>Email</strong>
+			</h1>
+			<p class="d-flex justify-content-center">
+				valentin.lay98@gmail.com
+			</p>
+		</div>
+		<div class="phone">
+			<div class="d-flex justify-content-center">
+				{% include "include/logo/_logo-phone.html.twig" %}
+			</div>
+			<h1 class="d-flex justify-content-center mt-4">
+				<strong>Téléphone</strong>
+			</h1>
+			<p class="d-flex justify-content-center">
+				06.32.94.62.52
+			</p>
+		</div>
+	</div>
+	<div class="social d-flex justify-content-end">
+		<div class="mt-4">
+            <a href="https://github.com/Valentin-int" target="_blank">
+                    {% include "include/logo/_logo-github-black.html.twig" %}
+            </a>
+        </div>
+		<div class="mt-4 ms-4">
+            <a href="https://www.linkedin.com/in/valentin-lay-0251681b6/" target="_blank">
+                {% include "include/logo/_logo-linkedin-black.html.twig" %}
+            </a>
+        </div>
 	</div>
 </section>

@@ -20,7 +20,7 @@
                         <div class="card" style="width: 18rem; background-image: url('../uploads/{{ project.images[0].name }}'); background-size: cover;">
                             <form class="d-flex justify-content-end" method="post" action="{{ path('admin_project_delete', {'id': project.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-                                <button class="btn">{% include "include/_cross_white.html.twig" %}</button>
+                                <button class="btn">{% include "include/logo/_cross_white.html.twig" %}</button>
                             </form>
                             {# {% for image in project.images %}
                                 {{ image.name }}
