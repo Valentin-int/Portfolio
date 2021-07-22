@@ -1,0 +1,19 @@
+{% block stylesheets %}
+	{{ encore_entry_link_tags('contact') }}
+{% endblock %}
+<section class="contact" id="contact">
+	<div class="d-flex justify-content-end">
+		<div class="form-new-project bg-secondary p-3">
+			<h1 class="mb-3 font-weight-normal d-flex justify-content-center">
+				<strong>Contact</strong>
+			</h1>
+			{{ form_start(formContact) }}
+			{{ form_row(formContact.lastname) }}
+			{{ form_row(formContact.firstname) }}
+			{{ form_row(formContact.email) }}
+			{{ form_row(formContact.message) }}
+			<button class="btn create-button">{{ button_label|default('ENVOYER') }}</button>
+			{{ form_end(formContact) }}
+		</div>
+	</div>
+</section>
