@@ -38,6 +38,8 @@ Encore
 
     .addStyleEntry('new_project', './assets/styles/admin/new_project.scss')
 
+    .addStyleEntry('index_project', './assets/styles/admin/index_project.scss')
+
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 

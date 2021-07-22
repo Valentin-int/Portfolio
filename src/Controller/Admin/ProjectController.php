@@ -10,6 +10,7 @@ use App\Form\ContributorType;
 use App\Form\ImageType;
 use App\Form\ProjectType;
 use App\Form\TechnoType;
+use App\Repository\ImageRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,10 +25,11 @@ class ProjectController extends AbstractController
     /**
      * @Route("/mes-projets", name="project_index", methods={"GET"})
      */
-    public function index(ProjectRepository $projectRepository): Response
+    public function index(ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
     {
         return $this->render('admin/project/index.html.twig', [
             'projects' => $projectRepository->findAll(),
+            'image' => $imageRepository->findAll(),
         ]);
     }
 
@@ -89,7 +91,7 @@ class ProjectController extends AbstractController
 
             return $this->redirect($request->getUri());
         }
-        
+
         if ($formTechno->isSubmitted() && $formTechno->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($techno);
@@ -116,7 +118,7 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirect($request->getUri());
+            return $this->redirectToRoute('admin_project_index');
         }
 
         return $this->renderForm('admin/project/edit.html.twig', [
@@ -136,6 +138,6 @@ class ProjectController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirect($request->getUri());
+        return $this->redirectToRoute('admin_project_index');
     }
 }
