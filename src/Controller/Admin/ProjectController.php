@@ -76,7 +76,7 @@ class ProjectController extends AbstractController
 
         if ($formImage->isSubmitted() && $formImage->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($image());
+            $entityManager->persist($image);
             $entityManager->flush();
 
             return $this->redirect($request->getUri());
