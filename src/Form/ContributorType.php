@@ -14,10 +14,10 @@ class ContributorType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom :',
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Prénom',
+                'label' => 'Prénom :',
             ])
         ;
     }
