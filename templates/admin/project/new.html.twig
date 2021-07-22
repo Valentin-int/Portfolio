@@ -1,0 +1,18 @@
+{% extends "parent/layout_admin.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('new_project') }}
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-end">
+        <div class="form-new-project bg-secondary p-3">
+            <h1 class="color-light d-flex justify-content-center">Ajouter un projet</h1>
+
+            {{ include('admin/project/_form.html.twig') }}
+
+            <a class="create-button" href="{{ path('admin_project_index') }}">back to list</a>
+        </div>
+    </div>
+{% endblock %}
