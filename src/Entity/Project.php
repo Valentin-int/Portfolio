@@ -32,17 +32,17 @@ class Project
     /**
      * @ORM\OneToMany(targetEntity=Contributor::class, mappedBy="project")
      */
-    private $contributors;
+    private Collection $contributors;
 
     /**
      * @ORM\OneToMany(targetEntity=Techno::class, mappedBy="project")
      */
-    private $technos;
+    private Collection $technos;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project")
      */
-    private $images;
+    private Collection $images;
 
     /**
      * @ORM\Column(type="text")

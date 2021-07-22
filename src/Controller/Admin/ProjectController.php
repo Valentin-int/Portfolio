@@ -2,8 +2,14 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contributor;
+use App\Entity\Image;
 use App\Entity\Project;
+use App\Entity\Techno;
+use App\Form\ContributorType;
+use App\Form\ImageType;
 use App\Form\ProjectType;
+use App\Form\TechnoType;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +45,7 @@ class ProjectController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_project_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/project/new.html.twig', [
@@ -49,12 +55,53 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_show", methods={"GET"})
+     * @Route("/{id}", name="project_show", methods={"GET","POST"})
      */
-    public function show(Project $project): Response
+    public function show(Project $project, Request $request): Response
     {
+        $image = new Image();
+        $image->setProject($project);
+        $formImage = $this->createForm(ImageType::class, $image);
+        $formImage->handleRequest($request);
+
+        $contributor = new Contributor();
+        $contributor->setProject($project);
+        $formContributor = $this->createForm(ContributorType::class, $contributor);
+        $formContributor->handleRequest($request);
+
+        $techno = new Techno();
+        $techno->setProject($project);
+        $formTechno = $this->createForm(TechnoType::class, $techno);
+        $formTechno->handleRequest($request);
+
+        if ($formImage->isSubmitted() && $formImage->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($image());
+            $entityManager->flush();
+
+            return $this->redirect($request->getUri());
+        }
+
+        if ($formContributor->isSubmitted() && $formContributor->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contributor);
+            $entityManager->flush();
+
+            return $this->redirect($request->getUri());
+        }
+        
+        if ($formTechno->isSubmitted() && $formTechno->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($techno);
+            $entityManager->flush();
+
+            return $this->redirect($request->getUri());
+        }
         return $this->render('admin/project/show.html.twig', [
             'project' => $project,
+            'formImage' => $formImage->createView(),
+            'formContributor' => $formContributor->createView(),
+            'formTechno' => $formTechno->createView(),
         ]);
     }
 
@@ -69,7 +116,7 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect($request->getUri());
         }
 
         return $this->renderForm('admin/project/edit.html.twig', [
@@ -83,12 +130,12 @@ class ProjectController extends AbstractController
      */
     public function delete(Request $request, Project $project): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $project->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirect($request->getUri());
     }
 }
