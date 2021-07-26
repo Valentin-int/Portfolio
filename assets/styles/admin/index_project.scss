@@ -1,6 +1,30 @@
 @import '../variables.scss';
 
 .card-project {
-    color: $light;
+    color: $invisible;
     height: 400px;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+        color: $light;
+        scale: 1.1;
+    }
+}
+
+.card-project h3 a {
+    color: $light;
+    transition: 0.3s;
+}
+
+.card {
+    width: 400px;
+}
+
+.card-title {
+    color: $invisible;
+}
+
+.card-button {
+    margin-top: 40%;
 }
