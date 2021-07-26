@@ -8,8 +8,16 @@ html {
 }
 
 body {
+    margin-top: 100px;
     background-color: $light;
     color: $dark;
+}
+
+.navbar {
+    z-index: 5;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
 p {
@@ -35,7 +43,8 @@ ul {
     color: $light;
     font-weight: bold;
     border-radius: $space;
-    width: $space-2 * 25;
+    border: none;
+    width: $space-2 * 15;
     text-transform: uppercase;
     text-decoration: none;
 
