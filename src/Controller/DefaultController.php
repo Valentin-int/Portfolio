@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\MessageType;
+use App\Repository\ImageRepository;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +16,7 @@ Class DefaultController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
     {
         $message = new Message();
         $formContact = $this->createForm(MessageType::class, $message);
@@ -28,6 +30,8 @@ Class DefaultController extends AbstractController
         }
         return $this->render('index/index.html.twig',[
             'formContact' => $formContact->createView(),
+            'projects' => $projectRepository->findAll(),
+            'image' => $imageRepository->findAll(),
         ]);
     }
 }

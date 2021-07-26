@@ -36,6 +36,8 @@ Encore
 
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
+    .addStyleEntry('my_project', './assets/styles/home/my_project.scss')
+
     .addStyleEntry('new_project', './assets/styles/admin/new_project.scss')
 
     .addStyleEntry('index_project', './assets/styles/admin/index_project.scss')
