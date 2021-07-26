@@ -13,13 +13,15 @@
 			{{ form_row(formContact.firstname) }}
 			{{ form_row(formContact.email) }}
 			{{ form_row(formContact.message) }}
-			<button class="btn create-button">{{ button_label|default('ENVOYER') }}</button>
+			<div class="d-flex justify-content-center">
+				<button class="btn create-button">{{ button_label|default('ENVOYER') }}</button>
+			</div>
 			{{ form_end(formContact) }}
 		</div>
 	</div>
 </section>
 <section class="footer">
-	<div class="information d-flex justify-content-around">
+	<div class="information d-flex justify-content-around mt-5">
 		<div class="maps">
 			<div class="d-flex justify-content-center">
 				{% include "include/logo/_logo-maps.html.twig" %}
@@ -50,7 +52,7 @@
 				<strong>Téléphone</strong>
 			</h1>
 			<p class="d-flex justify-content-center">
-				06.32.94.62.52
+				06 32 94 62 52
 			</p>
 		</div>
 	</div>
