@@ -39,7 +39,7 @@
 			<div id="carouselExampleControls" class="carousel slide col-6" data-bs-ride="carousel">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="{{ asset('uploads/' ~ project.images[0].name) }}" class="d-block w-100" alt="{{ project.images[0].name }}">
+						<img src="{{ asset('uploads/' ~ project.coverName) }}" class="d-block w-100" alt="{{ project.coverName }}">
 					</div>
 					{% for image in project.images %}
 						<div class="carousel-item">
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 
-		<a href="{{ path('admin_project_index') }}">back to list</a>
+		<a class="create-button" href="{{ path('admin_project_index') }}">retour</a>
 
 		<a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
 

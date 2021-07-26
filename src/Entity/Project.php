@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ProjectRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,7 +26,7 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -33,17 +34,17 @@ class Project
     private $url_project;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contributor::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Contributor::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $contributors;
 
     /**
-     * @ORM\OneToMany(targetEntity=Techno::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Techno::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $technos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $images;
 
@@ -55,7 +56,7 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $coverName;
+    private ?string $coverName = "";
 
     /**
      * @Vich\UploadableField(mapping="cover_file", fileNameProperty="coverName")
@@ -211,7 +212,7 @@ class Project
         return $this->coverName;
     }
 
-    public function setCoverName(string $coverName): self
+    public function setCoverName(?string $coverName): self
     {
         $this->coverName = $coverName;
 

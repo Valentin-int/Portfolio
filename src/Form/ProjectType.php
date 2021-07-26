@@ -22,8 +22,8 @@ class ProjectType extends AbstractType
             ->add('coverFile', VichFileType::class, [
                 'label' => "Ajouter une image de couverture :",
                 'required'      => false,
-                'allow_delete'  => true,
-                'download_uri' => true,
+                'allow_delete'  => false,
+                'download_uri' => false,
             ])
             ->add('url_project', UrlType::class, [
                 'label' => 'Url du projet :',

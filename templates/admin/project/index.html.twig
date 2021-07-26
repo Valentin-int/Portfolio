@@ -21,16 +21,15 @@
 							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
 							<button class="btn">{% include "include/logo/_cross_white.html.twig" %}</button>
 						</form>
-						{# {% for image in project.images %}
-							{{ image.name }}
-						{% endfor %} #}
 						<h3 class="card-title d-flex justify-content-center mt-2">
 							<a class="text-decoration-none" href="{{ path('admin_project_show', {'id': project.id}) }}">
 								{{ project.name }}
 							</a>
 						</h3>
 						<p class="card-text d-flex justify-content-center mt-4">{{ project.description }}</p>
-						<a class="text-decoration-none card-button up d-flex justify-content-center" href="{{ path('admin_project_edit', {'id': project.id}) }}">modifier</a>
+						<div class="d-flex justify-content-center">
+							<a class="text-decoration-none card-button up d-flex justify-content-center" href="{{ path('admin_project_edit', {'id': project.id}) }}">modifier</a>
+						</div>
 					</div>
 				</div>
 			{% else %}
