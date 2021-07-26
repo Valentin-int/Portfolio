@@ -10,8 +10,10 @@ use App\Form\ContributorType;
 use App\Form\ImageType;
 use App\Form\ProjectType;
 use App\Form\TechnoType;
+use App\Repository\ContributorRepository;
 use App\Repository\ImageRepository;
 use App\Repository\ProjectRepository;
+use App\Repository\TechnoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,7 +61,12 @@ class ProjectController extends AbstractController
     /**
      * @Route("/{id}", name="project_show", methods={"GET","POST"})
      */
-    public function show(Project $project, Request $request): Response
+    public function show(
+        Project $project,
+        Request $request,
+        TechnoRepository $technoRepository,
+        ContributorRepository $contributorRepository
+        ): Response
     {
         $image = new Image();
         $image->setProject($project);
@@ -104,6 +111,8 @@ class ProjectController extends AbstractController
             'formImage' => $formImage->createView(),
             'formContributor' => $formContributor->createView(),
             'formTechno' => $formTechno->createView(),
+            'contributors' => $contributorRepository->findAll(),
+            'technos' => $technoRepository->findAll(),
         ]);
     }
 
