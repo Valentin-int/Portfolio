@@ -2,9 +2,11 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-       picture_project:
-                    # alias qui nous permet d'accéder à nos images depuis le navigateur
+        picture_project:
                     uri_prefix: /images/pictures
-                    # Chemin vers le dossier de stockage
+                    upload_destination: '%upload_directory%'
+                    namer: Vich\UploaderBundle\Naming\UniqidNamer
+        cover_file:
+                    uri_prefix: /images/cover
                     upload_destination: '%upload_directory%'
                     namer: Vich\UploaderBundle\Naming\UniqidNamer
