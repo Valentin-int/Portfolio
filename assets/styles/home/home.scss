@@ -3,7 +3,7 @@
 .intro {
     position: relative;
     margin-top: 2%;
-    font-size: 2.5rem;
+    font-size: 2rem;
     z-index: -1;
 }
 
@@ -25,15 +25,17 @@ h1 {
 }
 
 .footer-home {
-    position: relative;
+    position: absolute;
     z-index: 1;
-    bottom: 310px;
+    bottom: 20px;
+    padding: 0px;
+    left: 0px;
 }
 
 .logo {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    bottom: 380px;
+    bottom: 40px;
     display: flex;
     justify-content: end;
 }
