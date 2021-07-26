@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProjectType extends AbstractType
 {
@@ -18,17 +19,18 @@ class ProjectType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom du projet :',
             ])
+            ->add('coverFile', VichFileType::class, [
+                'label' => "Ajouter une image de couverture :",
+                'required'      => false,
+                'allow_delete'  => false,
+                'download_uri' => false,
+            ])
             ->add('url_project', UrlType::class, [
                 'label' => 'Url du projet :',
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description :',
-            ])
-            // ->add('images', ImageType::class, [
-            //     'label' => false,
-            //     'data_class' => null,
-            // ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

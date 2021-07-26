@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use DateTime;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @Vich\Uploadable
  */
 class Project
 {
@@ -22,7 +26,7 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -30,17 +34,17 @@ class Project
     private $url_project;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contributor::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Contributor::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $contributors;
 
     /**
-     * @ORM\OneToMany(targetEntity=Techno::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Techno::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $technos;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="project", cascade={"remove"})
      */
     private Collection $images;
 
@@ -48,6 +52,22 @@ class Project
      * @ORM\Column(type="text")
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $coverName = "";
+
+    /**
+     * @Vich\UploadableField(mapping="cover_file", fileNameProperty="coverName")
+     * @var File
+     */
+    private $coverFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -183,6 +203,44 @@ class Project
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCoverName(): ?string
+    {
+        return $this->coverName;
+    }
+
+    public function setCoverName(?string $coverName): self
+    {
+        $this->coverName = $coverName;
+
+        return $this;
+    }
+
+    public function setCoverFile(File $coverName = null): Project
+    {
+        $this->coverFile = $coverName;
+        if ($coverName) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getCoverFile(): ?File
+    {
+        return $this->coverFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

@@ -23,7 +23,7 @@ class Image
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name ="";
 
     /**
      * @Vich\UploadableField(mapping="picture_project", fileNameProperty="name")
@@ -52,7 +52,7 @@ class Image
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
