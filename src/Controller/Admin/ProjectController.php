@@ -66,8 +66,7 @@ class ProjectController extends AbstractController
         Request $request,
         TechnoRepository $technoRepository,
         ContributorRepository $contributorRepository
-        ): Response
-    {
+    ): Response {
         $image = new Image();
         $image->setProject($project);
         $formImage = $this->createForm(ImageType::class, $image);
@@ -106,6 +105,7 @@ class ProjectController extends AbstractController
 
             return $this->redirect($request->getUri());
         }
+
         return $this->render('admin/project/show.html.twig', [
             'project' => $project,
             'formImage' => $formImage->createView(),
@@ -117,7 +117,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @Route("/modifier/projet/{id}", name="project_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Project $project): Response
     {
@@ -137,7 +137,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_delete", methods={"POST"})
+     * @Route("supprimer/projet/{id}", name="project_delete", methods={"POST"})
      */
     public function delete(Request $request, Project $project): Response
     {

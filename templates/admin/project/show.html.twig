@@ -6,6 +6,12 @@
 
 {% block body %}
 	<div class="container-fluid my-5">
+		<div class="d-flex justify-content-start">
+			<a class="create-button mt-5 d-flex justify-content-center" href="{{ path('admin_project_index') }}">retour</a>
+		</div>
+		<div class="d-flex justify-content-end">
+			<a class="create-button my-5 d-flex justify-content-center" href="{{ path('admin_project_edit', {'id': project.id}) }}">Modifier</a>
+		</div>
 		<div class="row">
 			<div class="col-6">
 				<div class="presentation">
@@ -20,8 +26,17 @@
 							<h2>Contributeur</h2>
 							<ul>
 								{% for contributor in contributors %}
-									<li>{{ contributor.lastname }}
-										{{ contributor.firstname }}</li>
+									<form method="post" action="{{ path('admin_contributor_edit', {'id': contributor.id}) }}">
+										<div class="d-flex align-items-center">
+											<li>
+												<input name="{{ contributor.lastname }}" value="{{ contributor.lastname }}">
+												<input name="{{ contributor.lastname }}" value="{{ contributor.lastname }}">
+											</li>
+											{% include "include/admin/edit/_form_edit.html.twig" %}
+											<input type="hidden" name="_token" value="{{ csrf_token('contributor_edit' ~ contributor.id) }}">
+										</form>
+										{% include "include/admin/delete/_delete_form_contributor.html.twig" %}
+									</div>
 								{% endfor %}
 							</ul>
 						</div>
@@ -29,7 +44,10 @@
 							<h2>Technologie utilisé</h2>
 							<ul>
 								{% for techno in technos %}
-									<li>{{ techno.name }}</li>
+									<div class="d-flex align-items-center">
+										<li>{{ techno.name }}</li>
+										{% include "include/admin/delete/_delete_form_techno.html.twig" %}
+									</div>
 								{% endfor %}
 							</ul>
 						</div>
@@ -45,6 +63,7 @@
 						<div class="carousel-item">
 							<img src="{{ asset('uploads/' ~ image.name) }}" class="d-block w-100" alt="{{ image.name }}">
 						</div>
+						{% include "include/admin/delete/_delete_form_image.html.twig" %}
 					{% endfor %}
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -84,11 +103,6 @@
 				{{ form_end(formTechno) }}
 			</div>
 		</div>
-
-		<a class="create-button" href="{{ path('admin_project_index') }}">retour</a>
-
-		<a href="{{ path('admin_project_edit', {'id': project.id}) }}">edit</a>
-
 		{{ include('admin/project/_delete_form.html.twig') }}
 	</div>
 {% endblock %}

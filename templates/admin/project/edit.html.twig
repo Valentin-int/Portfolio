@@ -6,14 +6,17 @@
 {% endblock %}
 
 {% block body %}
-	<div class="justify-content-end mt-5 ms-5">
-		<a class="create-button" href="{{ path('admin_project_index') }}">back to list</a>
-		{{ include('admin/project/_delete_form.html.twig') }}
-	</div>
 	<div class="d-flex justify-content-end">
 		<div class="form-new-project bg-secondary p-3">
+			<form class="d-flex justify-content-end" method="post" action="{{ path('admin_project_delete', {'id': project.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+				<button class="btn">{% include "include/logo/_cross_white.html.twig" %}</button>
+			</form>
 			<h1 class="color-light d-flex justify-content-center mb-4">Modifier un projet</h1>
-			{{ include('admin/project/_form.html.twig', {'button_label': 'Update'}) }}
+				{{ include('admin/project/_form.html.twig', {'button_label': 'modifier'}) }}
 		</div>
+	</div>
+	<div class="d-flex justify-content-start">
+		<a class="create-button d-flex justify-content-center ms-4" href="{{ path('admin_project_index') }}">retour</a>
 	</div>
 {% endblock %}
