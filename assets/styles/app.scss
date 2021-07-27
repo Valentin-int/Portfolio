@@ -15,6 +15,7 @@ body {
 }
 
 .navbar {
+    overflow: hidden;
     z-index: 5;
     position: fixed;
     top: 0px;
@@ -23,6 +24,10 @@ body {
 
 .navbar h2{
     font-size: 1.5rem;
+}
+
+.main {
+    margin-top: 8%;
 }
 
 p {
@@ -47,7 +52,7 @@ ul {
     background-color: $primary;
     color: $light;
     font-weight: bold;
-    border-radius: $space;
+    border-radius: $space/2;
     border: none;
     width: $space-2 * 15;
     text-transform: uppercase;

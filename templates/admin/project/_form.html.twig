@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn create-button ">{{ button_label|default('AJOUTER') }}</button>
+{{ form_widget(form) }}
+<div class="d-flex justify-content-center">
+	<button class="btn create-button ">{{ button_label|default('AJOUTER') }}</button>
+</div>
 {{ form_end(form) }}

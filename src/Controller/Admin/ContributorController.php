@@ -14,25 +14,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ContributorController extends AbstractController
 {
-    
+
     /**
      * @Route("/edit/contributeur/{id}", name="contributor_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Contributor $contributor): Response
     {
-        $formContributorEdit = $this->createForm(ContributorType::class, $contributor);
-        $formContributorEdit->handleRequest($request);
-
-        if ($formContributorEdit->isSubmitted() && $formContributorEdit->isValid()) {
+        if ($this->isCsrfTokenValid('admin_contributor_edit' . $contributor->getId(), $request->request->get('_token'))) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_project_show', ['id' => $contributor->getProject()->getId()]);
+            dd($contributor);
         }
-
-        return $this->renderForm('admin/project/show.html.twig', [
-            'contributor' => $contributor,
-            'formContributorEdit' => $formContributorEdit,
-        ]);
+        return $this->redirectToRoute('admin_project_show', ['id' => $contributor->getProject()->getId()]);
     }
 
     /**
