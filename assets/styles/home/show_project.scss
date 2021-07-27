@@ -11,3 +11,9 @@
 .description {
     width: 100%;
 }
+
+.carousel-item img {
+    width: 900px;
+    height: 600px;
+    object-fit: cover;
+}

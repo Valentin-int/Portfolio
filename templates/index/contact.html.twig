@@ -46,7 +46,9 @@
 		</div>
 		<div class="phone">
 			<div class="d-flex justify-content-center">
-				{% include "include/logo/_logo-phone.html.twig" %}
+				<a href="{{ path('app_login') }}">
+					{% include "include/logo/_logo-phone.html.twig" %}
+				</a>
 			</div>
 			<h1 class="d-flex justify-content-center mt-4">
 				<strong>Téléphone</strong>
@@ -58,14 +60,14 @@
 	</div>
 	<div class="social d-flex justify-content-end">
 		<div class="mt-4">
-            <a href="https://github.com/Valentin-int" target="_blank">
-                    {% include "include/logo/_logo-github-black.html.twig" %}
-            </a>
-        </div>
+			<a href="https://github.com/Valentin-int" target="_blank">
+				{% include "include/logo/_logo-github-black.html.twig" %}
+			</a>
+		</div>
 		<div class="mt-4 ms-4">
-            <a href="https://www.linkedin.com/in/valentin-lay-0251681b6/" target="_blank">
-                {% include "include/logo/_logo-linkedin-black.html.twig" %}
-            </a>
-        </div>
+			<a href="https://www.linkedin.com/in/valentin-lay-0251681b6/" target="_blank">
+				{% include "include/logo/_logo-linkedin-black.html.twig" %}
+			</a>
+		</div>
 	</div>
 </section>

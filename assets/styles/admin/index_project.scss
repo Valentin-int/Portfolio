@@ -7,13 +7,18 @@
     transition: 0.3s;
 
     &:hover {
-        opacity: 0.7;
+        filter: grayscale(80%);
         color: $light;
         scale: 1.1;
     }
 }
 
-.card-project h3 a {
+.card-project a h3 {
+    color: $light;
+    transition: 0.3s;
+}
+
+.card-project a p {
     color: $light;
     transition: 0.3s;
 }
