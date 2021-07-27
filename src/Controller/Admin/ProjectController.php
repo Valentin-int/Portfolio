@@ -106,9 +106,40 @@ class ProjectController extends AbstractController
 
             return $this->redirect($request->getUri());
         }
+
+        $formContributorEdit = $this->createForm(ContributorType::class, $contributor);
+        $formContributorEdit->handleRequest($request);
+
+        $formImageEdit = $this->createForm(ImageType::class, $image);
+        $formImageEdit->handleRequest($request);
+
+        $formTechnoEdit = $this->createForm(TechnoType::class, $techno);
+        $formTechnoEdit->handleRequest($request);
+
+        if ($formContributorEdit->isSubmitted() && $formContributorEdit->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_project_show', ['id' => $contributor->getProject()->getId()]);
+        }
+
+        if ($formImageEdit->isSubmitted() && $formImageEdit->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_project_show', ['id' => $techno->getProject()->getId()]);
+        }
+
+        if ($formTechnoEdit->isSubmitted() && $formTechnoEdit->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_project_show', ['id' => $image->getProject()->getId()]);
+        }
+
         return $this->render('admin/project/show.html.twig', [
             'project' => $project,
             'formImage' => $formImage->createView(),
+            'formContributorEdit' => $formContributorEdit->createView(),
+            'formTechnoEdit' => $formTechnoEdit->createView(),
+            'formImageEdit' => $formImageEdit->createView(),
             'formContributor' => $formContributor->createView(),
             'formTechno' => $formTechno->createView(),
             'contributors' => $contributorRepository->findAll(),
@@ -117,7 +148,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @Route("/modifier/projet/{id}", name="project_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Project $project): Response
     {
@@ -137,7 +168,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_delete", methods={"POST"})
+     * @Route("supprimer/projet/{id}", name="project_delete", methods={"POST"})
      */
     public function delete(Request $request, Project $project): Response
     {
