@@ -6,7 +6,6 @@
 
 .card-project {
     color: $invisible;
-    height: 400px;
     transition: 0.3s;
 
     &:hover {
@@ -19,10 +18,6 @@
 .card-project h3 {
     color: $light;
     transition: 0.3s;
-}
-
-.card {
-    width: 400px;
 }
 
 .card-button {

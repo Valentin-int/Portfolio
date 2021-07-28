@@ -22,7 +22,7 @@ class ContributorController extends AbstractController
     {
         if ($this->isCsrfTokenValid('admin_contributor_edit' . $contributor->getId(), $request->request->get('_token'))) {
             $this->getDoctrine()->getManager()->flush();
-            dd($contributor);
+          dd("1");  
         }
         return $this->redirectToRoute('admin_project_show', ['id' => $contributor->getProject()->getId()]);
     }

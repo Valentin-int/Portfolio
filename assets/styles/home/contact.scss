@@ -23,3 +23,13 @@
 .social {
     margin-right: 2%;
 }
+
+@media (max-width: 768px) {
+    .form-new-project {
+        width: 90%;
+        position: absolute;
+        margin-right: 0%;
+        top: 100px;
+    }
+    
+}
