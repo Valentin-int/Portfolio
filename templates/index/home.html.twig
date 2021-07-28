@@ -3,7 +3,10 @@
 {% endblock %}
 <section class="home" id="home">
     <div class="row">
-        <div class="col-6 intro">
+        <div class="d-sm-none">
+            <img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
+        </div>
+        <div class="col-12 col-sm-6 intro">
             <div class="title">
                 <h1 class="d-flex justify-content-center"><strong>BONJOUR</strong></h1>
                 <span class="d-flex justify-content-center">et bienvenue !</span>
@@ -17,7 +20,7 @@
                 <span class="d-flex justify-content-center strong-font"><strong>au design et à l'intégration</strong></span>
             </div>
         </div>
-        <div class="col-6 image-intro">
+        <div class="col-6 image-intro d-none d-sm-block">
             <img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
         </div>
         <div class="footer-home">

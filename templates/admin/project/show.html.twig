@@ -30,13 +30,13 @@
 										<div class="d-flex align-items-center">
 											<li>
 												<input name="{{ contributor.lastname }}" value="{{ contributor.lastname }}">
-												<input name="{{ contributor.lastname }}" value="{{ contributor.lastname }}">
+												<input name="{{ contributor.firstname }}" value="{{ contributor.firstname }}">
 											</li>
 											{% include "include/admin/edit/_form_edit.html.twig" %}
 											<input type="hidden" name="_token" value="{{ csrf_token('contributor_edit' ~ contributor.id) }}">
-										</form>
-										{% include "include/admin/delete/_delete_form_contributor.html.twig" %}
-									</div>
+										</div>
+									</form>
+									{% include "include/admin/delete/_delete_form_contributor.html.twig" %}
 								{% endfor %}
 							</ul>
 						</div>
