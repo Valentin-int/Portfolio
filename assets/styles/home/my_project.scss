@@ -1,7 +1,14 @@
 @import '../variables.scss';
 
 .project {
-    margin-top: 5%;
+    position: relative;
+    z-index: 2;
+    margin-top: 8%;
+    background-color: $secondary;
+}
+
+.project h2 {
+    color: $light;
 }
 
 .card-project {
@@ -22,4 +29,13 @@
 
 .card-button {
     margin-top: 50%;
+}
+
+.footer-project {
+    background-color: $light;
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
 }
