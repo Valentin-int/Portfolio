@@ -1,42 +1,38 @@
 {% block stylesheets %}
-    {{ encore_entry_link_tags('home') }}
+	{{ encore_entry_link_tags('home') }}
 {% endblock %}
 <section class="home" id="home">
-    <div class="row">
-        <div class="d-sm-none">
-            <img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
-        </div>
-        <div class="col-12 col-sm-6 intro">
-            <div class="title">
-                <h1 class="d-flex justify-content-center"><strong>BONJOUR</strong></h1>
-                <span class="d-flex justify-content-center">et bienvenue !</span>
-            </div>
-            <div class="description">
-                <span class="d-flex justify-content-center">Je m'appelle</span>
-                <span class="d-flex justify-content-center strong-font"><strong>Valentin Lay</strong></span>
-                <span class="d-flex justify-content-center mt-5">Je suis un</span>
-                <span class="d-flex justify-content-center strong-font"><strong>développeur web et web mobile</strong></span>
-                <span class="d-flex justify-content-center">passionné et sensible</span>
-                <span class="d-flex justify-content-center strong-font"><strong>au design et à l'intégration</strong></span>
-            </div>
-        </div>
-        <div class="col-6 image-intro d-none d-sm-block">
-            <img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
-        </div>
-        <div class="footer-home">
-            {% include "include/_footer-home.html.twig" %}
-        </div>
-        <div class="logo me-5">
-            <div class="logo-github me-4">
-                <a href="https://github.com/Valentin-int" target="_blank">
-                    {% include "include/logo/_logo-github.html.twig" %}
-                </a>
-            </div>
-            <div class="logo-linkedin me-4">
-                <a href="https://www.linkedin.com/in/valentin-lay-0251681b6/" target="_blank">
-                    {% include "include/logo/_logo-linkedin.html.twig" %}
-                </a>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="d-sm-none">
+			<img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
+		</div>
+		<div class="col-12 col-sm-6 intro">
+			<div class="title">
+				<h1 class="d-flex justify-content-center">
+					<strong>BONJOUR</strong>
+				</h1>
+				<span class="d-flex justify-content-center">et bienvenue !</span>
+			</div>
+			<div class="description">
+				<span class="d-flex justify-content-center">Je m'appelle</span>
+				<span class="d-flex justify-content-center strong-font">
+					<strong>Valentin Lay</strong>
+				</span>
+				<span class="d-flex justify-content-center mt-5">Je suis un</span>
+				<span class="d-flex justify-content-center strong-font">
+					<strong>développeur web et web mobile</strong>
+				</span>
+				<span class="d-flex justify-content-center">passionné et sensible</span>
+				<span class="d-flex justify-content-center strong-font">
+					<strong>au design et à l'intégration</strong>
+				</span>
+			</div>
+		</div>
+		<div class="col-6 image-intro d-none d-sm-block">
+			<img class="idea-in-water" src="{{ asset('build/images/idea-in-water.jpg') }}" alt="image-intro"/>
+		</div>
+		<div class="footer-home">
+			{% include "include/_footer-home.html.twig" %}
+		</div>
+	</div>
 </section>
