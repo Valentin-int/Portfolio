@@ -35,7 +35,7 @@ class DefaultController extends AbstractController
             $email = (new Email())
             ->from($mailerFrom)
             ->to($mailerTo)
-            ->subject('Vous avez un nouveau message de la part d\'un utilisateur de Treeb\'Z.')
+            ->subject('Vous avez un nouveau message de la part d\'un visiteur du site.')
             ->html($this->renderView('message/new_message_email.html.twig', ['message' => $message]));
             $mailer->send($email);
 
