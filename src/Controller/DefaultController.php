@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Entity\Project;
-use App\Entity\Techno;
 use App\Form\MessageType;
 use App\Repository\ContributorRepository;
 use App\Repository\ImageRepository;
@@ -13,7 +12,9 @@ use App\Repository\TechnoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
 
 /**
  * @Route("/", name="index_")
@@ -23,15 +24,22 @@ class DefaultController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function index(Request $request, ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
+    public function index(Request $request, MailerInterface $mailer , ProjectRepository $projectRepository, ImageRepository $imageRepository): Response
     {
         $message = new Message();
         $formContact = $this->createForm(MessageType::class, $message);
         $formContact->handleRequest($request);
         if ($formContact->isSubmitted() && $formContact->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($message);
-            $entityManager->flush();
+            $mailerFrom = $this->getParameter('mailer_from');
+            $mailerTo = $this->getParameter('mailer_to');
+            $email = (new Email())
+            ->from($mailerFrom)
+            ->to($mailerTo)
+            ->subject('Vous avez un nouveau message de la part d\'un utilisateur de Treeb\'Z.')
+            ->html($this->renderView('message/new_message_email.html.twig', ['message' => $message]));
+            $mailer->send($email);
+
+            $this->addFlash('success', 'Merci pour votre message, je vous répondrais le plus rapidement possible.');
 
             return $this->redirect($request->getUri());
         }
