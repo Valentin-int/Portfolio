@@ -34,6 +34,8 @@ Encore
      */
     .addEntry('app', './assets/app.js')
 
+    .addEntry('navbar', './assets/navbar.js')
+
     .addStyleEntry('home', './assets/styles/home/home.scss')
 
     .addStyleEntry('my_project', './assets/styles/home/my_project.scss')
