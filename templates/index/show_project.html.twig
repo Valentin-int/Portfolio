@@ -20,7 +20,7 @@
 						<div class="contributor">
 							<h2>Contributeur</h2>
 							<ul>
-								{% for contributor in contributors %}
+								{% for contributor in project.contributors %}
 									<li>{{ contributor.lastname }}
 										{{ contributor.firstname }}</li>
 								{% endfor %}
@@ -29,7 +29,7 @@
 						<div class="techno">
 							<h2>Technologie utilisé</h2>
 							<ul>
-								{% for techno in technos %}
+								{% for techno in project.technos %}
 									<li>{{ techno.name }}</li>
 								{% endfor %}
 							</ul>
@@ -41,7 +41,7 @@
 				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="{{ asset('uploads/' ~ project.images[0].name) }}" class="d-block w-100" alt="{{ project.images[0].name }}">
+							<img src="{{ asset('uploads/' ~ project.coverName) }}" class="d-block w-100" alt="{{ project.coverName }}">
 						</div>
 						{% for image in project.images %}
 							<div class="carousel-item">
@@ -68,6 +68,11 @@
 							</div>
 							<div class="modal-body">
 								<div class="row">
+									<div class="d-flex justify-content-center mt-4">
+										<div class="card card-project" style="width: 70rem; background-size: cover;">
+											<img src="{{ asset('uploads/' ~ project.coverName) }}" alt="{{ project.coverName }}">
+										</div>
+									</div>
 									{% for image in project.images %}
 										<div class="d-flex justify-content-center mt-4">
 											<div class="card card-project" style="width: 70rem; background-size: cover;">
