@@ -23,3 +23,18 @@
     position: absolute;
     bottom: 0;
 }
+
+@media (max-width: 500px) {
+    body {
+        margin-top: 120px;
+    }
+
+    .carousel-item img {
+        width: 425px;
+        height: 275px;
+    }
+
+    .return {
+        position: static;
+    }
+}

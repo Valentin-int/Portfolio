@@ -5,8 +5,8 @@
 {% endblock %}
 {% block body %}
 	<div class="container-fluid mt-5">
-		<div class="row">
-			<div class="col-6">
+		<div class="d-sm-flex">
+			<div class="col col-sm-6">
 				<div class="presentation">
 					<h1>
 						<strong>{{ project.name }}</strong>
@@ -15,7 +15,7 @@
 					<h2 class="mt-5">Lien vers le projet :</h2>
 					<span>{{ project.urlProject }}</span>
 				</div>
-				<div class="contributor-techno d-flex align-items-end">
+				<div class="contributor-techno d-flex align-items-end mt-3 mt-sm-0">
 					<div class="description d-flex justify-content-around">
 						<div class="contributor">
 							<h2>Contributeur</h2>
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-6">
+			<div class="col col-sm-6">
 				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
@@ -62,7 +62,8 @@
 					<div class="modal-dialog modal-dialog-scrollable modal-xl">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h3 class="modal-title" id="exampleModalToggleLabel">Projet : {{ project.name }}</h3>
+								<h3 class="modal-title" id="exampleModalToggleLabel">Projet :
+									{{ project.name }}</h3>
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
@@ -87,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="return mb-3">
+		<div class="return my-3 d-flex justify-content-center">
 			<a class="create-button d-flex justify-content-center" href="/#project">retour</a>
 		</div>
 	</div>
