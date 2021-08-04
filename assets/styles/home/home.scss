@@ -23,23 +23,8 @@ h1 {
     width: 100%;
 }
 
-.footer-home {
-    position: absolute;
-    z-index: 2;
-    bottom: 0px;
-    padding: 0px;
-    left: 0px;
-}
-
 @media (max-width: 1000px) {
     .intro {
         font-size: 1rem;
-    }
-    
-    .footer-home {
-        position: static;
-        bottom: 0px;
-        padding: 0px;
-        left: 0px;
     }
 }
