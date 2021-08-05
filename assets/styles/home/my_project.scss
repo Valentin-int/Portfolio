@@ -1,14 +1,8 @@
 @import '../variables.scss';
 
-.header-project {
-    position: absolute;
-    z-index: 2;
-    bottom: 0px;
-    padding: 0px;
-    left: 0px;
-}
 
 .project {
+    padding: 110px 0;
     background-color: $secondary;
 }
 
@@ -16,18 +10,23 @@
     color: $light;
 }
 
-.project-body {
-    padding-top: $space-5*2;
+.card-image {
+    transition: 0.3s;
+
+    &:hover {
+        -webkit-transform: scale(1.1);
+    }
 }
 
 .card-project {
     color: $invisible;
     transition: 0.3s;
+    height: 100%;
+    width: 100%;
 
     &:hover {
-        filter: grayscale(80%);
+        background-color: $clear-dark;
         color: $light;
-        scale: 1.1;
     }
 }
 
@@ -36,27 +35,15 @@
     transition: 0.3s;
 }
 
+.card-project p {
+    overflow: hidden;
+}
+
 .card-button {
     margin-top: 50%;
 }
 
-.footer-project {
-    background-color: $light;
-    -moz-transform: scale(1, -1);
-    -webkit-transform: scale(1, -1);
-    -o-transform: scale(1, -1);
-    -ms-transform: scale(1, -1);
-    transform: scale(1, -1);
-}
-
 @media (max-width: 1000px) {
-    
-    .header-project {
-        position: static;
-        bottom: 0px;
-        padding: 0px;
-        left: 0px;
-    }
 
     .project-body {
         padding-top: 0px;
@@ -66,7 +53,4 @@
 
 @media (min-width: 2000px) {
     
-    .header-project {
-        bottom: 150px;
-    }
 }
