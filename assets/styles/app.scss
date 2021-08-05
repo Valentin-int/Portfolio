@@ -15,40 +15,14 @@ body {
 }
 
 .navbar {
-    overflow: hidden;
-    z-index: 5;
-    position: fixed;
-    top: 0px;
     width: 100%;
-    transition: all 0.3s ease-in-out;
 }
 
 .navbar.scroll {
-    background-color: $invisible !important;
-}
-
-.navbar.scroll span.navbar-brand {
-    display: none !important;
-}
-
-.navbar.scroll.navbar-dark .navbar-nav .nav-link {
-    color: $dark !important;
-}
-
-.navbar.scroll {
-    color: $dark !important;
-}
-
-.logoNavDark {
-    display: none;
-}
-
-.logoNavDark.active {
-    display: block;
-}
-
-img.logoNavLight.desactive {
-    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 0px;
+    bottom: none;
 }
 
 .navbar h2 {
