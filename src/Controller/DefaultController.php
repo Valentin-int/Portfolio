@@ -41,7 +41,7 @@ class DefaultController extends AbstractController
 
             $this->addFlash('success', 'Merci pour votre message, je vous répondrais le plus rapidement possible.');
 
-            return $this->redirect($request->getUri());
+            return $this->redirectToRoute('index_home');
         }
         return $this->render('index/index.html.twig', [
             'formContact' => $formContact->createView(),
